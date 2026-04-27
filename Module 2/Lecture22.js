@@ -1,6 +1,6 @@
 // Async & Await
 //  async and await are keyword in js used to handle asynchronous operation
-//  async makes a function return promise
+//  async makes or  means a function return promise
 //  await pauses the function execution until the promise is resolved or reject
 
 // async function myFunction() {
