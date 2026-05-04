@@ -1,0 +1,38 @@
+.task_column_heading {
+  display: flex;
+  align-items: center;
+}
+.task_column {
+  margin: 20px;
+}
+.task_column_icon {
+  width: 25px;
+  margin-right: 5px;
+}
+.task_text {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.task_delete {
+  width: 35px;
+  height: 30px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.task_delete :hover {
+  background-color: #ebebeb;
+}
+.delete_icon {
+  width: 20px;
+  transition: all 0.3s ease-in-out;
+}
+.task_card_bottom_line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
