@@ -25,21 +25,30 @@ const TaskForm = () => {
   };
 
   const selectedTag = (tag) => {
+    setTaskData((prev) => {
+      const isSelected = prev.tags.includes(tag);
+      //  is tag is selected includes in tag then
+      const tags = isSelected
+        ? prev.tags.filter((item) => item !== tag)
+        : // if it is not their means value is fresh
+          [...prev.tags, tag];
+      return { ...prev, tags };
+    });
     //  here getting selected tag (some is array method) if tag is present is taskData so it will give  u true or false means user by selecedttag method we are checking by props
-    if (taskData.tags.some((item) => item === tag)) {
-      // here it will get the new tags which is not matching it will give you
-      const filterTags = taskData.tags.filter((item) => item !== tag);
-      setTaskData((prev) => {
-        return { ...prev, tags: filterTags };
-      });
-    } else {
-      setTaskData((prev) => {
-        // copy the old tags also
-        return { ...prev, tags: [...prev.tags, tag] };
-      });
-    }
+    // if (taskData.tags.some((item) => item === tag)) {
+    //   // here it will get the new tags which is not matching it will give you
+    //   const filterTags = taskData.tags.filter((item) => item !== tag);
+    //   setTaskData((prev) => {
+    //     return { ...prev, tags: filterTags };
+    //   });
+    // } else {
+    //   setTaskData((prev) => {
+    //     // copy the old tags also
+    //     return { ...prev, tags: [...prev.tags, tag] };
+    //   });
+    // }
   };
-  // console.log(taskData);
+  console.log(taskData);
 
   // const [task, setTask] = useState("");
   // const [status, setStatus] = useState("");
