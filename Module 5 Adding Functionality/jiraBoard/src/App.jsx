@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import TaskForm from "./components/TaskForm/TaskForm";
 import TaskColumn from "./components/TaskColumn/TaskColumn";
 import closedIcon from "./assets/image.png";
+
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  //  after setting we have update the localStorage after delete
+  const [tasks, setTasks] = useState(() => {
+    const existingTasks = localStorage.getItem("tasks");
+    return existingTasks ? JSON.parse(existingTasks) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleDelete = (taskIndex) => {
-    const newTask = tasks.filter((tasks, taskIndex) => taskIndex !== taskIndex);
+    const newTask = tasks.filter((task, index) => index !== taskIndex);
     setTasks(newTask);
   };
 
