@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./TaskForm.css";
 import Tag from "../Tag/Tag";
-const TaskForm = () => {
+const TaskForm = ({ setTasks }) => {
   // instead of using two state we are using one state handling form by adding extra attribute name extracting the value
   const [taskData, setTaskData] = useState({
     task: "",
@@ -20,8 +20,18 @@ const TaskForm = () => {
       return { ...prev, [name]: value };
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    //  whatever data is coming show in ui it will return array of objects
+    setTasks((prev) => {
+      return [...prev, taskData];
+    });
+    setTaskData({
+      task: "",
+      status: "Ready For Development",
+      tags: [],
+    });
   };
 
   const selectedTag = (tag) => {
@@ -34,6 +44,7 @@ const TaskForm = () => {
           [...prev.tags, tag];
       return { ...prev, tags };
     });
+
     //  here getting selected tag (some is array method) if tag is present is taskData so it will give  u true or false means user by selecedttag method we are checking by props
     // if (taskData.tags.some((item) => item === tag)) {
     //   // here it will get the new tags which is not matching it will give you
@@ -48,7 +59,6 @@ const TaskForm = () => {
     //   });
     // }
   };
-  console.log(taskData);
 
   // const [task, setTask] = useState("");
   // const [status, setStatus] = useState("");
@@ -67,6 +77,7 @@ const TaskForm = () => {
         <input
           type="text"
           name="task"
+          value={taskData.task}
           className="task_input"
           placeholder="Enter Task Details"
           onChange={handleChange}
@@ -93,14 +104,15 @@ const TaskForm = () => {
             <select
               className="task_status"
               name="status"
+              value={taskData.status}
               onChange={handleChange}
             >
               <option value="Ready For Development">
                 Ready For Development
               </option>
-              <option value="In-Progress">In-Progress</option>
+              <option value="In Progress">In Progress</option>
               <option value="Ready for Test">Ready for Test</option>
-              <option value="Close">Close</option>
+              <option value="Closed">Closed</option>
             </select>
             <button type="submit" className="task_submit">
               + Add

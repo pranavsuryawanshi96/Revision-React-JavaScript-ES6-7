@@ -1,7 +1,7 @@
 import React from "react";
 import "./TaskColumn.css";
-import TaskCard from "../TaksCard/TaskCard";
-const TaskColumn = ({ title, icon }) => {
+import TaskCard from "../TaskCard/TaskCard";
+const TaskColumn = ({ title, icon, tasks, status, handleDelete }) => {
   return (
     <div>
       <section className="task_column">
@@ -9,7 +9,18 @@ const TaskColumn = ({ title, icon }) => {
           <img src={icon} alt="" className="task_column_icon" />
           {title}
         </h2>
-        <TaskCard />
+        {tasks.map(
+          (task, index) =>
+            task.status === status && (
+              <TaskCard
+                key={index}
+                title={task.task}
+                tags={task.tags}
+                handleDelete={handleDelete}
+                index={index}
+              />
+            ),
+        )}
       </section>
     </div>
   );
