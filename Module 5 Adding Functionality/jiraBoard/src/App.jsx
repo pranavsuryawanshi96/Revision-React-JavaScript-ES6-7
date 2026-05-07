@@ -6,10 +6,8 @@ import closedIcon from "./assets/image.png";
 
 const App = () => {
   //  after setting we have update the localStorage after delete
-  const [tasks, setTasks] = useState(() => {
-    const existingTasks = localStorage.getItem("tasks");
-    return existingTasks ? JSON.parse(existingTasks) : [];
-  });
+  const existingTasks = localStorage.getItem("tasks");
+  const [tasks, setTasks] = useState(JSON.parse(existingTasks) || []);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
