@@ -8,6 +8,8 @@ const App = () => {
   //  after setting we have update the localStorage after delete
   const existingTasks = localStorage.getItem("tasks");
   const [tasks, setTasks] = useState(JSON.parse(existingTasks) || []);
+  //  for dragging feature created the state
+  const [activeCard, setActiveCard] = useState(null);
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -28,18 +30,21 @@ const App = () => {
           status="Ready For Development"
           tasks={tasks}
           handleDelete={handleDelete}
+        
         />
         <TaskColumn
           title="In Progress"
           tasks={tasks}
           status="In Progress"
           handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
         />
         <TaskColumn
           title="Ready for Test"
           status="Ready for Test"
           tasks={tasks}
           handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
         />
         <TaskColumn
           title="Closed"
@@ -47,8 +52,10 @@ const App = () => {
           tasks={tasks}
           status="Closed"
           handleDelete={handleDelete}
+          setActiveCard={setActiveCard}
         />
       </main>
+      <h2>Active Card{activeCard}</h2>
     </div>
   );
 };
