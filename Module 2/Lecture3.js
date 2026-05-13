@@ -4,6 +4,17 @@
 // var a = 10;
 // console.log(a);
 
+// var x = 10;
+// var x = 20;   // Re-declaration allowed
+// x = 30;       // Update allowed
+// console.log(x); // Output: 30
+
+// // let example
+// let y = 10;
+// // let y = 20; // Re-declaration NOT allowed
+// y = 25;       // Update allowed
+// console.log(y); // Output: 25
+
 // ex 2 let
 // try {
 //   console.log(b);
@@ -30,4 +41,3 @@
 // function heyFun() {
 //   console.log("hi");
 // }
-

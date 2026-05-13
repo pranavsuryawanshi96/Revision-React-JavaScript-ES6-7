@@ -11,6 +11,20 @@ const App = () => {
   //  for dragging feature created the state
   const [activeCard, setActiveCard] = useState(null);
 
+  const onDrop = (status, position) => {
+    console.log(
+      `${activeCard} is going to place into${status} and  at the position ${position}`,
+    );
+    if (activeCard === null || activeCard === undefined) return;
+    const tasktoMove = tasks[activeCard];
+    const updatedTask = tasks.filter((tasks, index) => index !== activeCard);
+    updatedTask.splice(position, 0, {
+      ...tasktoMove,
+      status: status,
+    });
+    setTasks(updatedTask);
+  };
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -30,7 +44,8 @@ const App = () => {
           status="Ready For Development"
           tasks={tasks}
           handleDelete={handleDelete}
-        
+          setActiveCard={setActiveCard}
+          onDrop={onDrop}
         />
         <TaskColumn
           title="In Progress"
@@ -38,6 +53,7 @@ const App = () => {
           status="In Progress"
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
+          onDrop={onDrop}
         />
         <TaskColumn
           title="Ready for Test"
@@ -45,6 +61,7 @@ const App = () => {
           tasks={tasks}
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
+          onDrop={onDrop}
         />
         <TaskColumn
           title="Closed"
@@ -53,10 +70,10 @@ const App = () => {
           status="Closed"
           handleDelete={handleDelete}
           setActiveCard={setActiveCard}
+          onDrop={onDrop}
         />
       </main>
-      <h2>Active Card{activeCard}</h2>
-    </div>
+     </div>
   );
 };
 

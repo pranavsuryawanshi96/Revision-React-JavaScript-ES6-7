@@ -1,6 +1,7 @@
-.task_column_heading {
+/* .task_column_heading {
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
 .task_column {
   margin: 20px;
@@ -31,8 +32,21 @@
   width: 20px;
   transition: all 0.3s ease-in-out;
 }
-.task_card_bottom_line {
+.task_card_bottom_line {  
   display: flex;
   align-items: center;
   justify-content: space-between;
+} */
+.task_column_heading {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.task_column {
+  margin: 20px;
+}
+.task_column_icon {
+  width: 25px;
+  margin-right: 5px;
 }
