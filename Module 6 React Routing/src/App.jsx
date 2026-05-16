@@ -7,6 +7,7 @@ import Admin from "./components/Admin/Admin";
 import Sales, { default as sales } from "./components/Admin/Sales";
 import Navbar from "./components/Navbar/Navbar";
 import NotFound from "./components/NotFound/NotFound";
+import SingleProduct from "./components/Products/SingleProduct";
 const App = () => {
   return (
     <div className="app">
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<SingleProduct />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/sales" element={<Sales />} />
