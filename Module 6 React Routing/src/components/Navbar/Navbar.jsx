@@ -1,25 +1,26 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   return (
+    // to make  Single-Page Application we have to use the instead of a tag we can use Link tag and to show highlight use the NavLink
     <nav>
       <ul className="navbar_list">
         <li>
-          <a href="/">Home</a>
+          <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <a href="/products">Products</a>
+          <NavLink to="/products">Products</NavLink>
         </li>
         <li>
-          <a href="/articles">Articles</a>
+          <NavLink to="/articles">Articles</NavLink>
         </li>
         <li>
-          <a href="/admin">Admin</a>
+          <NavLink to="/admin">Admin</NavLink>
         </li>
         <li>
-          <a href="/contact">Contact US</a>
+          <NavLink to="/contact">Contact US</NavLink>
         </li>
       </ul>
     </nav>
