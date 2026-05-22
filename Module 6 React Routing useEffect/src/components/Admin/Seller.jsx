@@ -4,6 +4,10 @@ const Seller = () => {
   const [name, setName] = useState("");
   useEffect(() => {
     console.log("Component Mount.!!");
+    //  demounting or cleanup function
+    return () => {
+      console.log("Component UnMount.!!");
+    };
   }, []);
   return (
     <div>
