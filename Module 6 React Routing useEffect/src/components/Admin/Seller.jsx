@@ -15,18 +15,29 @@ const Seller = () => {
   //   };
   // }, []);
   useEffect(() => {
-    setLoading(true);
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => setUsers(res.data))
-      .catch((error) => {
-        setErrors(error.message);
-      });
-    setLoading(false);
+    fetchUsers();
+    // setLoading(true);
+    // axios
+    //   .get("https://jsonplaceholder.typicode.com/users")
+    //   .then((res) => setUsers(res.data))
+    //   .catch((error) => {
+    //     setErrors(error.message);
+    //   });
+    // setLoading(false);
     // fetch("https://jsonplaceholder.typicode.com/users")
     //   .then((res) => res.json())
     //   .then((data) => console.log(data));
   }, []);
+  const fetchUsers = async () => {
+    try {
+      const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+      setUsers(res.data);
+      setLoading(false);
+    } catch (error) {
+      setErrors(error.message);
+      setLoading(false);
+    }
+  };
   return (
     <div>
       <h3>Admin Seller Page</h3>
