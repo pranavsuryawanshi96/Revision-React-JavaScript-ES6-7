@@ -1,8 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Loader from "../common/Loader";
 
 const Seller = () => {
   const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   // const [name, setName] = useState("");
   // useEffect(() => {
   //   console.log("Component Mount.!!");
@@ -12,9 +14,11 @@ const Seller = () => {
   //   };
   // }, []);
   useEffect(() => {
+    setLoading(true);
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => setUsers(res.data));
+    setLoading(false);
     // fetch("https://jsonplaceholder.typicode.com/users")
     //   .then((res) => res.json())
     //   .then((data) => console.log(data));
@@ -28,6 +32,11 @@ const Seller = () => {
           setName(e.target.value);
         }}
       />
+      {isLoading && (
+        <h3>
+          <Loader />
+        </h3>
+      )}
       {users.map((user) => (
         <p key={user.id}>{user.name}</p>
       ))}
