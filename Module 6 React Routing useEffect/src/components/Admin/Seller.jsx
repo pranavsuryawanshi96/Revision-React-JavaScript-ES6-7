@@ -6,7 +6,7 @@ const Seller = () => {
   const [users, setUsers] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
-  // const [name, setName] = useState("");
+  const [name, setName] = useState("");
   // useEffect(() => {
   //   console.log("Component Mount.!!");
   //   //  demounting or cleanup function
@@ -38,6 +38,24 @@ const Seller = () => {
       setLoading(false);
     }
   };
+
+  const addUser = () => {
+    const newUser = {
+      name,
+      id: users.length + 1,
+    };
+    setUsers([newUser, ...users]);
+    axios
+      .post("https://jsonplaceholder.typicode.com/users", newUser)
+      .then((res) => {
+        // after saving data to server.
+        setUsers([res.data, ...users]);
+      })
+      .catch((error) => {
+        setErrors(error.message);
+        setUsers(users);
+      });
+  };
   return (
     <div>
       <h3>Admin Seller Page</h3>
@@ -47,6 +65,7 @@ const Seller = () => {
           setName(e.target.value);
         }}
       />
+      <button onClick={addUser}>Add User</button>
       {isLoading && <Loader />}
       {errors && <em>{errors}</em>}
       {users.map((user) => (
