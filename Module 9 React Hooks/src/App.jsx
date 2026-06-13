@@ -3,6 +3,7 @@ import MyClassComponent from "./ReactLifeCycle/MyClassComponent";
 import MyFunctionalComponent from "./ReactLifeCycle/MyFunctionalComponent";
 import MyStateComponent from "./Hooks/MyStateComponent";
 import MyUseEffect from "./Hooks/MyUseEffect";
+import MyUseRef from "./Hooks/MyUseRef";
 
 function App() {
   // const [show, setShow] = useState(true);
@@ -21,6 +22,8 @@ function App() {
       */}
       <h2>App Component</h2>
       <MyUseEffect />
+      <hr />
+      <MyUseRef />
     </>
   );
 }
