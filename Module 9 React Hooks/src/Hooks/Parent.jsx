@@ -15,7 +15,7 @@ const Parent = () => {
           setName(e.target.value);
         }}
       />
-      <button
+      {/* <button
         onClick={() => {
           inputEle.current.focus();
         }}
@@ -28,6 +28,20 @@ const Parent = () => {
         }}
       >
         Clear Input
+      </button> */}
+      <button
+        onClick={() => {
+          inputEle.current.focusInput();
+        }}
+      >
+        Focus
+      </button>
+      <button
+        onClick={() => {
+          inputEle.current.clearInput();
+        }}
+      >
+        Clear
       </button>
     </div>
   );
